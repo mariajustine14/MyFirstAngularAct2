@@ -1,3 +1,22 @@
 <p>{{title}}</p>
-<app-first (firstEvent)="appEvent($event)"></app-first>
-<app-second [secondMessage]="appMessage"></app-second>
+<h2>Device Details View</h2>
+<!-- <app-first (firstEvent)="appEvent($event)"></app-first>
+<app-second [secondMessage]="appMessage"></app-second> -->
+<!-- <p>Count: {{count }} </p>
+<button (click)="addEvent()">Add Count</button> <br> <br>
+<button (click)="subEvent()"> Sub Count </button>
+<app-second *ngIf="count > 5"></app-second> -->
+<!-- <div *ngFor="let arrays of array">
+    <p>Name: {{arrays.name}}</p>
+    <p>Lastname: {{arrays.lastnamme}}</p>
+    <ul> Address:
+        <li>{{arrays.address.zipCode}}</li>
+        <li>{{arrays.address.town}}</li>
+    </ul>
+
+
+</div> -->
+<div *ngFor="let device of devices">
+    <app-device-details [deviceDetail]="device"></app-device-details>
+</div>
+<router-outlet></router-outlet>
