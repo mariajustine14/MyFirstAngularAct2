@@ -1,5 +1,23 @@
-<p>{{title}}</p>
-<h2>Device Details View</h2>
+<p style="margin-left: 45%; margin-top: 30px; font-size: larger;">
+    {{ title }}
+</p>
+<h5 style="margin-left: 640px;">Device Details View</h5>
+
+<div *ngIf="!showUpdate">
+    <div *ngFor="let device of deviceDetails">
+        <app-device-details [deviceDetail]="device" (updateDetail)="updateDevice($event, device.id)">
+        </app-device-details>
+    </div>
+</div>
+
+<div *ngIf="showUpdate">
+    <h5 style="margin-left: 650px;">Reactive form</h5>
+    <app-reactive-form [device]="selectedDevice" (update)="updateDisplay($event)">
+    </app-reactive-form>
+</div>
+
+<router-outlet></router-outlet>
+<!-- -------------------------------------------------------------------------------------- -->
 <!-- <app-first (firstEvent)="appEvent($event)"></app-first>
 <app-second [secondMessage]="appMessage"></app-second> -->
 <!-- <p>Count: {{count }} </p>
@@ -13,10 +31,11 @@
         <li>{{arrays.address.zipCode}}</li>
         <li>{{arrays.address.town}}</li>
     </ul>
-
-
 </div> -->
-<div *ngFor="let device of devices">
-    <app-device-details [deviceDetail]="device"></app-device-details>
-</div>
-<router-outlet></router-outlet>
+
+<!------------------------------------------------------------------------------------------------ -->
+
+<!-- <div *ngFor="let device of devices">
+        <app-device-details [deviceDetail]="device"></app-device-details>
+    </div> -->
+<!-- <app-template-form (deviceDetails)=addDevice($event)></app-template-form> -->
