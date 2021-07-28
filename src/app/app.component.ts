@@ -33,17 +33,14 @@ export class AppComponent {
     }
   ];
 
-  // deviceDetail: Device;
-
   // addDevice(device: Device) {
   //   device.id = this.devices.length;
   //   this.devices.push(device);
   //   console.log(this.devices);
   // }
 
-  //   updateDisplay() {}
-  //   // addDevice(device: Device) {
-  //   //   this.devices.push(device as Device);
+  // addDevice(device: Device) {
+  //   this.devices.push(device as Device);
 
   updateDevice(event, id) {
     this.showUpdate = event;

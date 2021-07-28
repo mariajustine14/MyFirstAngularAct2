@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Device } from './../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-device-details',
@@ -12,10 +13,11 @@ export class DeviceDetailsComponent implements OnInit {
   @Output() updateDetail: EventEmitter<any> = new EventEmitter();
 
   updateDevice() {
-    this.updateDetail.emit(true);
+    // this.updateDetail.emit(true);
+    this.router.navigate(['/update']);
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 }

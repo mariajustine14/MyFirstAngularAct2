@@ -11,6 +11,7 @@ import { FirstComponent } from './first/first.component';
 import { DeviceDetailsComponent } from './device-details/device-details.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { DeviceListComponent } from './device-list/device-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     FirstComponent,
     DeviceDetailsComponent,
     TemplateFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    DeviceListComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

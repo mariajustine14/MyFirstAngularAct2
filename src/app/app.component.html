@@ -3,7 +3,7 @@
 </p>
 <h5 style="margin-left: 640px;">Device Details View</h5>
 
-<div *ngIf="!showUpdate">
+<!-- <div *ngIf="!showUpdate">
     <div *ngFor="let device of deviceDetails">
         <app-device-details [deviceDetail]="device" (updateDetail)="updateDevice($event, device.id)">
         </app-device-details>
@@ -14,9 +14,8 @@
     <h5 style="margin-left: 650px;">Reactive form</h5>
     <app-reactive-form [device]="selectedDevice" (update)="updateDisplay($event)">
     </app-reactive-form>
-</div>
+</div> -->
 
-<router-outlet></router-outlet>
 <!-- -------------------------------------------------------------------------------------- -->
 <!-- <app-first (firstEvent)="appEvent($event)"></app-first>
 <app-second [secondMessage]="appMessage"></app-second> -->
@@ -39,3 +38,6 @@
         <app-device-details [deviceDetail]="device"></app-device-details>
     </div> -->
 <!-- <app-template-form (deviceDetails)=addDevice($event)></app-template-form> -->
+
+
+<router-outlet></router-outlet>
