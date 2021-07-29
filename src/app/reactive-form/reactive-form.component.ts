@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Device } from '../models';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DeviceService } from '../device.service';
 
 @Component({
   selector: 'app-reactive-form',
@@ -11,16 +12,18 @@ import { Router } from '@angular/router';
 export class ReactiveFormComponent implements OnInit {
   // id: number;
 
-  @Input() device: Device = {
-    id: null,
-    name: '',
-    brand: '',
-    model: '',
-    year: null,
-    serial: ''
-  };
+  // @Input() device: Device = {
+  //   id: null,
+  //   name: '',
+  //   brand: '',
+  //   model: '',
+  //   year: null,
+  //   serial: ''
+  // };
 
   @Output() update = new EventEmitter();
+
+  deviceDetails: Device;
 
   updateForm = new FormGroup({
     id: new FormControl(''),
@@ -31,16 +34,22 @@ export class ReactiveFormComponent implements OnInit {
     serial: new FormControl('')
   });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private deviceService: DeviceService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.deviceDetails = this.deviceService.getDevice(this.deviceService.id);
+
     this.updateForm = new FormGroup({
-      id: new FormControl(this.device.id),
-      name: new FormControl(this.device.name),
-      brand: new FormControl(this.device.brand),
-      model: new FormControl(this.device.model),
-      year: new FormControl(this.device.year),
-      serial: new FormControl(this.device.serial)
+      id: new FormControl(this.deviceDetails.id),
+      name: new FormControl(this.deviceDetails.name),
+      brand: new FormControl(this.deviceDetails.brand),
+      model: new FormControl(this.deviceDetails.model),
+      year: new FormControl(this.deviceDetails.year),
+      serial: new FormControl(this.deviceDetails.serial)
     });
   }
   updateDevice() {
@@ -48,5 +57,6 @@ export class ReactiveFormComponent implements OnInit {
     // console.log(this.updateForm.value);
     // this.update.emit(this.updateForm);
     this.router.navigate(['/list']);
+    this.deviceService.updateDevice(this.updateForm.value);
   }
 }

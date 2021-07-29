@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DeviceService } from '../device.service';
 
 @Component({
   selector: 'app-template-form',
@@ -11,13 +12,15 @@ import { Router } from '@angular/router';
 export class TemplateFormComponent implements OnInit {
   @Output() deviceDetails = new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private deviceService: DeviceService) {}
 
   ngOnInit(): void {}
 
   addDevice(form: NgForm) {
     // this.deviceDetails.emit(form.value);
-    console.log(form.value);
+    // console.log(form.value);
+    form.value.id = this.deviceService.getNewId();
+    this.deviceService.addDevice(form.value);
     this.router.navigate(['/list']);
   }
 }
